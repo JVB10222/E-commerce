@@ -25,10 +25,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -39,6 +36,11 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <div>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</div>
+                <div>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</div>
+            }
         </footer>
     </div>
 
